@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estancias Madrid – Carnes, Vinos & Quesos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bordo: #6B1A2A;
+    --bordo-dark: #4A0F1B;
+    --bordo-light: #8B2A3E;
+    --bordo-pale: #F5EBE8;
+    --gold: #C4A46A;
+    --gold-light: #D4B98A;
+    --cream: #FAF6F0;
+    --text: #2A1A1A;
+    --text-light: #6B5555;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(107,26,42,0.97);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    height: 70px;
+    border-bottom: 1px solid rgba(196,164,106,0.3);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: color 0.25s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  #inicio {
+    min-height: 100vh;
+    background: linear-gradient(160deg, var(--bordo-dark) 0%, var(--bordo) 60%, #8B2A3E 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 5% 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #inicio::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 50% 60%, rgba(196,164,106,0.08) 0%, transparent 70%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C4A46A' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 750px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(196,164,106,0.4);
+    padding: 6px 20px;
+    margin-bottom: 28px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
+    font-weight: 300;
+    line-height: 1.0;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    animation: fadeUp 0.9s 0.1s ease both;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-sub {
+    margin: 24px auto 0;
+    font-size: 0.82rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    animation: fadeUp 1s 0.2s ease both;
+  }
+
+  .hero-divider {
+    width: 50px;
+    height: 1px;
+    background: var(--gold);
+    margin: 32px auto;
+    animation: fadeUp 1s 0.3s ease both;
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.75);
+    max-width: 520px;
+    margin: 0 auto 42px;
+    animation: fadeUp 1s 0.4s ease both;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--bordo-dark);
+    text-decoration: none;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    transition: all 0.3s ease;
+    animation: fadeUp 1s 0.5s ease both;
+  }
+
+  .hero-cta:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 100px 5%; }
+
+  .section-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--bordo-dark);
+  }
+
+  .section-title em { font-style: italic; color: var(--bordo); }
+
+  .gold-line {
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin: 22px 0 40px;
+  }
+
+  /* ── SOBRE NOSOTROS ── */
+  #nosotros {
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .nosotros-visual {
+    position: relative;
+  }
+
+  .nosotros-card {
+    background: var(--bordo);
+    padding: 60px 50px;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nosotros-card::before {
+    content: '"';
+    position: absolute;
+    top: -20px;
+    right: 30px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14rem;
+    color: rgba(196,164,106,0.12);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .nosotros-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--gold-light);
+    position: relative;
+    z-index: 1;
+  }
+
+  .nosotros-attr {
+    margin-top: 20px;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .nosotros-accent {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 80px;
+    height: 80px;
+    border: 2px solid var(--gold);
+    opacity: 0.4;
+  }
+
+  .nosotros-text p {
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: var(--text-light);
+    margin-bottom: 18px;
+  }
+
+  .nosotros-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .stat {
+    border-left: 2px solid var(--gold);
+    padding-left: 16px;
+  }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--bordo);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-top: 4px;
+  }
+
+  /* ── PRODUCTOS ── */
+  #productos {
+    background: var(--cream);
+  }
+
+  .productos-header {
+    max-width: 600px;
+    margin-bottom: 60px;
+  }
+
+  .cat-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 50px;
+  }
+
+  .cat-tab {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 9px 20px;
+    border: 1px solid rgba(107,26,42,0.25);
+    background: transparent;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all 0.25s;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .cat-tab.active, .cat-tab:hover {
+    background: var(--bordo);
+    color: var(--white);
+    border-color: var(--bordo);
+  }
+
+  .productos-grid {
+    display: none;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1px;
+    background: rgba(107,26,42,0.1);
+    border: 1px solid rgba(107,26,42,0.1);
+  }
+
+  .productos-grid.active {
+    display: grid;
+  }
+
+  .product-card {
+    background: var(--white);
+    padding: 24px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    transition: background 0.2s;
+  }
+
+  .product-card:hover {
+    background: var(--bordo-pale);
+  }
+
+  .product-name {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--text);
+  }
+
+  .product-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--bordo);
+    white-space: nowrap;
+  }
+
+  .product-price.na {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--text-light);
+    text-transform: uppercase;
+  }
+
+  /* ── CONTACTO ── */
+  #contacto {
+    background: var(--bordo-dark);
+    color: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  #contacto .section-title { color: var(--white); }
+  #contacto .section-title em { color: var(--gold-light); }
+
+  #contacto p {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.65);
+    max-width: 400px;
+    margin-bottom: 40px;
+  }
+
+  .contact-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .contact-icon {
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(196,164,106,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.1rem;
+  }
+
+  .contact-info { font-size: 0.85rem; color: rgba(255,255,255,0.8); }
+  .contact-info span { display: block; font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 3px; }
+
+  .wa-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #25D366;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 16px 32px;
+    transition: all 0.3s;
+    margin-top: 36px;
+  }
+
+  .wa-btn:hover {
+    background: #1ebe5a;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(37,211,102,0.3);
+  }
+
+  .wa-icon {
+    font-size: 1.2rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #1A0A10;
+    padding: 32px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  footer p {
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    #nosotros, #contacto {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+    .nav-links { display: none; }
+    .nosotros-stats { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 500px) {
+    .nosotros-stats { grid-template-columns: 1fr 1fr; }
+    .productos-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Estancias Madrid</div>
+  <ul class="nav-links">
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#productos">Productos</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="inicio">
+  <div class="hero-content">
+    <div class="hero-badge">Buenos Aires · Argentina</div>
+    <h1 class="hero-title">Estancias<br><em>Madrid</em></h1>
+    <p class="hero-sub">Carnes · Vinos · Quesos</p>
+    <div class="hero-divider"></div>
+    <p class="hero-desc">La mejor selección de cortes de carne vacuna, vinos de bodega y quesos artesanales, directo a tu mesa con la calidad que merecés.</p>
+    <a href="#productos" class="hero-cta">Ver productos</a>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros">
+  <div class="nosotros-visual reveal">
+    <div class="nosotros-card">
+      <p class="nosotros-quote">La tradición del campo argentino en cada corte, cada copa y cada tabla.</p>
+      <p class="nosotros-attr">— Estancias Madrid</p>
+      <div class="nosotros-accent"></div>
+    </div>
+  </div>
+  <div class="nosotros-text reveal">
+    <p class="section-label">Sobre nosotros</p>
+    <h2 class="section-title">Una <em>pasión</em><br>por la calidad</h2>
+    <div class="gold-line"></div>
+    <p>En Estancias Madrid seleccionamos con criterio los mejores productos: cortes de carne frescos, vinos de las principales bodegas del país y quesos de primera calidad.</p>
+    <p>Nuestro compromiso es llevar a tu mesa la experiencia de la estancia argentina con la comodidad del pedido directo.</p>
+    <div class="nosotros-stats">
+      <div class="stat">
+        <div class="stat-num">+40</div>
+        <div class="stat-label">Cortes</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">10</div>
+        <div class="stat-label">Vinos</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">7</div>
+        <div class="stat-label">Quesos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section id="productos">
+  <div class="productos-header reveal">
+    <p class="section-label">Nuestros productos</p>
+    <h2 class="section-title">Todo lo que<br>necesitás para <em>el asado</em></h2>
+    <div class="gold-line"></div>
+  </div>
+
+  <div class="cat-tabs">
+    <button class="cat-tab active" onclick="showCat('vaca')">Carne Vacuna</button>
+    <button class="cat-tab" onclick="showCat('pollo')">Pollo</button>
+    <button class="cat-tab" onclick="showCat('cerdo')">Cerdo</button>
+    <button class="cat-tab" onclick="showCat('achuras')">Achuras</button>
+    <button class="cat-tab" onclick="showCat('milanesas')">Milanesas</button>
+    <button class="cat-tab" onclick="showCat('hamburguesas')">Hamburguesas</button>
+    <button class="cat-tab" onclick="showCat('quesos')">Quesos</button>
+    <button class="cat-tab" onclick="showCat('aceites')">Aceites & Acetos</button>
+    <button class="cat-tab" onclick="showCat('vinos')">Vinos</button>
+    <button class="cat-tab" onclick="showCat('varios')">Varios</button>
+  </div>
+
+  <!-- CARNE VACUNA -->
+  <div class="productos-grid active" id="cat-vaca">
+    <div class="product-card"><span class="product-name">Asado</span><span class="product-price">$28.000</span></div>
+    <div class="product-card"><span class="product-name">Vacío</span><span class="product-price">$32.000</span></div>
+    <div class="product-card"><span class="product-name">Matambre</span><span class="product-price">$16.000</span></div>
+    <div class="product-card"><span class="product-name">Tapa de Asado</span><span class="product-price">$17.500</span></div>
+    <div class="product-card"><span class="product-name">Bife Angosto</span><span class="product-price">$27.000</span></div>
+    <div class="product-card"><span class="product-name">Bife Ancho</span><span class="product-price">$26.000</span></div>
+    <div class="product-card"><span class="product-name">Lomo</span><span class="product-price">$33.000</span></div>
+    <div class="product-card"><span class="product-name">Nalga</span><span class="product-price">$25.500</span></div>
+    <div class="product-card"><span class="product-name">Cuadril</span><span class="product-price">$27.500</span></div>
+    <div class="product-card"><span class="product-name">Peceto</span><span class="product-price">$28.000</span></div>
+    <div class="product-card"><span class="product-name">Paleta</span><span class="product-price">$19.000</span></div>
+    <div class="product-card"><span class="product-name">Falda</span><span class="product-price">$14.500</span></div>
+    <div class="product-card"><span class="product-name">Rossbeff</span><span class="product-price">$19.000</span></div>
+    <div class="product-card"><span class="product-name">Osobuco</span><span class="product-price">$16.000</span></div>
+    <div class="product-card"><span class="product-name">Bola de Lomo</span><span class="product-price">$25.500</span></div>
+    <div class="product-card"><span class="product-name">Tapa de Nalga</span><span class="product-price">$19.500</span></div>
+    <div class="product-card"><span class="product-name">Entraña</span><span class="product-price">$35.000</span></div>
+    <div class="product-card"><span class="product-name">Colita de Cuadril</span><span class="product-price">$30.000</span></div>
+    <div class="product-card"><span class="product-name">Tortuguita</span><span class="product-price">$19.000</span></div>
+    <div class="product-card"><span class="product-name">Palomita</span><span class="product-price">$18.500</span></div>
+    <div class="product-card"><span class="product-name">Cuadrada</span><span class="product-price">$21.000</span></div>
+    <div class="product-card"><span class="product-name">Ojo de Bife</span><span class="product-price">$31.000</span></div>
+    <div class="product-card"><span class="product-name">Bife de Chorizo</span><span class="product-price na">Consultar</span></div>
+    <div class="product-card"><span class="product-name">Marucha</span><span class="product-price na">Consultar</span></div>
+    <div class="product-card"><span class="product-name">Otros Cortes</span><span class="product-price">$10.000</span></div>
+  </div>
+
+  <!-- POLLO -->
+  <div class="productos-grid" id="cat-pollo">
+    <div class="product-card"><span class="product-name">Supremas</span><span class="product-price">$13.500</span></div>
+    <div class="product-card"><span class="product-name">Pata y Muslo</span><span class="product-price">$5.500</span></div>
+    <div class="product-card"><span class="product-name">Pata y Muslo Deshuesada</span><span class="product-price">$13.500</span></div>
+    <div class="product-card"><span class="product-name">Pollo Entero</span><span class="product-price">$7.500</span></div>
+    <div class="product-card"><span class="product-name">Alitas</span><span class="product-price">$3.000</span></div>
+  </div>
+
+  <!-- CERDO -->
+  <div class="productos-grid" id="cat-cerdo">
+    <div class="product-card"><span class="product-name">Bondiola</span><span class="product-price">$13.200</span></div>
+    <div class="product-card"><span class="product-name">Carré</span><span class="product-price">$11.000</span></div>
+    <div class="product-card"><span class="product-name">Chuleta</span><span class="product-price na">Consultar</span></div>
+    <div class="product-card"><span class="product-name">Churrasquito</span><span class="product-price na">Consultar</span></div>
+    <div class="product-card"><span class="product-name">Jamón</span><span class="product-price na">Consultar</span></div>
+    <div class="product-card"><span class="product-name">Matambrito</span><span class="product-price">$16.000</span></div>
+    <div class="product-card"><span class="product-name">Panceta</span><span class="product-price na">Consultar</span></div>
+    <div class="product-card"><span class="product-name">Pechito</span><span class="product-price">$11.000</span></div>
+    <div class="product-card"><span class="product-name">Solomillo</span><span class="product-price">$15.000</span></div>
+  </div>
+
+  <!-- ACHURAS -->
+  <div class="productos-grid" id="cat-achuras">
+    <div class="product-card"><span class="product-name">Chinchulines</span><span class="product-price">$7.000</span></div>
+    <div class="product-card"><span class="product-name">Corazón</span><span class="product-price na">Consultar</span></div>
+    <div class="product-card"><span class="product-name">Hígado</span><span class="product-price">$6.000</span></div>
+    <div class="product-card"><span class="product-name">Lengua</span><span class="product-price">$12.000</span></div>
+    <div class="product-card"><span class="product-name">Molleja</span><span class="product-price">$29.500</span></div>
+    <div class="product-card"><span class="product-name">Riñón</span><span class="product-price">$5.800</span></div>
+    <div class="product-card"><span class="product-name">Chorizos</span><span class="product-price">$12.000</span></div>
+    <div class="product-card"><span class="product-name">Morcilla</span><span class="product-price">$9.500</span></div>
+    <div class="product-card"><span class="product-name">Salchicha Parrillera</span><span class="product-price">$13.000</span></div>
+    <div class="product-card"><span class="product-name">Salchicha Viena</span><span class="product-price">$10.700</span></div>
+  </div>
+
+  <!-- MILANESAS -->
+  <div class="productos-grid" id="cat-milanesas">
+    <div class="product-card"><span class="product-name">Milanesa de Pollo</span><span class="product-price">$16.000</span></div>
+    <div class="product-card"><span class="product-name">Milanesa de Carne</span><span class="product-price">$17.000</span></div>
+    <div class="product-card"><span class="product-name">Milanesa de Peceto</span><span class="product-price">$19.000</span></div>
+  </div>
+
+  <!-- HAMBURGUESAS -->
+  <div class="productos-grid" id="cat-hamburguesas">
+    <div class="product-card"><span class="product-name">Hamburguesa de Carne</span><span class="product-price">$12.000</span></div>
+    <div class="product-card"><span class="product-name">Hamburguesa de Pollo</span><span class="product-price">$12.000</span></div>
+  </div>
+
+  <!-- QUESOS -->
+  <div class="productos-grid" id="cat-quesos">
+    <div class="product-card"><span class="product-name">Provoleta La Blanqueada</span><span class="product-price">$40.000</span></div>
+    <div class="product-card"><span class="product-name">Parmesano Porción La Blanqueada</span><span class="product-price">$28.000</span></div>
+    <div class="product-card"><span class="product-name">Gouda Porción La Blanqueada</span><span class="product-price">$20.000</span></div>
+    <div class="product-card"><span class="product-name">Reggianito Trozado Santa Rosa</span><span class="product-price">$40.000</span></div>
+    <div class="product-card"><span class="product-name">Reggianito ¼ Horma Santa Rosa</span><span class="product-price">$38.000</span></div>
+    <div class="product-card"><span class="product-name">Provoleta Santa Rosa Trozada</span><span class="product-price">$45.000</span></div>
+    <div class="product-card"><span class="product-name">Provolone Trozado Santa Rosa</span><span class="product-price">$40.000</span></div>
+  </div>
+
+  <!-- ACEITES & ACETOS -->
+  <div class="productos-grid" id="cat-aceites">
+    <div class="product-card"><span class="product-name">Aceite Dell Isola 500ml</span><span class="product-price">$21.700</span></div>
+    <div class="product-card"><span class="product-name">Aceite Dell Isola 250ml</span><span class="product-price">$12.000</span></div>
+    <div class="product-card"><span class="product-name">Aceite Catena 500ml</span><span class="product-price">$26.000</span></div>
+    <div class="product-card"><span class="product-name">Aceite Zuelo</span><span class="product-price">$17.500</span></div>
+    <div class="product-card"><span class="product-name">Aceite Zuccardi Arauco</span><span class="product-price">$27.000</span></div>
+    <div class="product-card"><span class="product-name">Aceite Zuccardi Genovesa</span><span class="product-price">$19.000</span></div>
+    <div class="product-card"><span class="product-name">Aceite Laur 500ml</span><span class="product-price">$14.500</span></div>
+    <div class="product-card"><span class="product-name">Aceto Dell Isola 500ml</span><span class="product-price">$7.900</span></div>
+    <div class="product-card"><span class="product-name">Aceto Millan</span><span class="product-price">$5.500</span></div>
+  </div>
+
+  <!-- VINOS -->
+  <div class="productos-grid" id="cat-vinos">
+    <div class="product-card"><span class="product-name">En Enemigo</span><span class="product-price">$20.000</span></div>
+    <div class="product-card"><span class="product-name">Angeliza Zapata</span><span class="product-price">$25.000</span></div>
+    <div class="product-card"><span class="product-name">Rutini</span><span class="product-price">$14.000</span></div>
+    <div class="product-card"><span class="product-name">Pispi</span><span class="product-price">$10.000</span></div>
+    <div class="product-card"><span class="product-name">Bressia</span><span class="product-price">$28.000</span></div>
+    <div class="product-card"><span class="product-name">Luigi Bosca</span><span class="product-price">$12.500</span></div>
+    <div class="product-card"><span class="product-name">DV Catena</span><span class="product-price">$12.000</span></div>
+    <div class="product-card"><span class="product-name">Saint Felicen</span><span class="product-price">$9.500</span></div>
+    <div class="product-card"><span class="product-name">Trumpeter</span><span class="product-price">$8.500</span></div>
+    <div class="product-card"><span class="product-name">Nicasia</span><span class="product-price">$7.000</span></div>
+    <div class="product-card"><span class="product-name">Cordero Piel de Lobo</span><span class="product-price">$5.000</span></div>
+    <div class="product-card"><span class="product-name">Sapo de Otro Pozo</span><span class="product-price">$11.000</span></div>
+  </div>
+
+  <!-- VARIOS -->
+  <div class="productos-grid" id="cat-varios">
+    <div class="product-card"><span class="product-name">Criolla</span><span class="product-price">$8.400</span></div>
+    <div class="product-card"><span class="product-name">Chimichurri</span><span class="product-price">$2.800</span></div>
+    <div class="product-card"><span class="product-name">Aceitunas</span><span class="product-price">$6.300</span></div>
+    <div class="product-card"><span class="product-name">Carbón</span><span class="product-price">$7.000</span></div>
+    <div class="product-card"><span class="product-name">Leña</span><span class="product-price">$9.000</span></div>
+    <div class="product-card"><span class="product-name">Huevos</span><span class="product-price">$6.500</span></div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="reveal">
+    <p class="section-label">Contacto</p>
+    <h2 class="section-title">Hacé tu<br><em>pedido</em></h2>
+    <div class="gold-line"></div>
+    <p>Contactanos directamente por WhatsApp para hacer tu pedido o consultar disponibilidad de productos. Respondemos rápido.</p>
+    <a href="https://wa.me/5491100000000?text=Hola!%20Quiero%20hacer%20un%20pedido%20en%20Estancias%20Madrid" class="wa-btn" target="_blank">
+      <span class="wa-icon">💬</span> Escribinos por WhatsApp
+    </a>
+  </div>
+  <div class="contact-items reveal">
+    <div class="contact-item">
+      <div class="contact-icon">📍</div>
+      <div class="contact-info">
+        <span>Ubicación</span>
+        Buenos Aires, Argentina
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">📱</div>
+      <div class="contact-info">
+        <span>WhatsApp</span>
+        +54 9 11 0000-0000
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">🕐</div>
+      <div class="contact-info">
+        <span>Horarios</span>
+        Lunes a Sábado · 8 a 20 hs
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">🚚</div>
+      <div class="contact-info">
+        <span>Envíos</span>
+        Consultá cobertura y costos
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Estancias Madrid</div>
+  <p>© 2025 · Carnes · Vinos · Quesos</p>
+</footer>
+
+<script>
+  // Category tabs
+  function showCat(cat) {
+    document.querySelectorAll('.productos-grid').forEach(g => g.classList.remove('active'));
+    document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('cat-' + cat).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(r => observer.observe(r));
+</script>
+</body>
+</html>
