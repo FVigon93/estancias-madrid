@@ -372,8 +372,16 @@
   }
 
   function formatPrice(val) {
-    if (!val || val === '' || val === '-') return null;
-    const num = parseFloat(val.replace(/[^0-9.]/g, ''));
+    if (val === null || val === undefined || val === '' || val === '-') return null;
+    // Handle numeric values from Apps Script (already numbers)
+    let num;
+    if (typeof val === 'number') {
+      num = val;
+    } else {
+      // Remove currency symbols, spaces, dots used as thousand separators
+      const cleaned = String(val).replace(/[^0-9,.-]/g, '').replace(',', '.');
+      num = parseFloat(cleaned);
+    }
     if (isNaN(num) || num === 0) return null;
     return '$' + Math.round(num).toLocaleString('es-AR');
   }
