@@ -455,52 +455,17 @@
   }
 
     async function loadProducts() {
-    // Usamos Google Visualization API con JSONP — no tiene problemas de CORS
-    const scriptId = 'gsheets-jsonp';
-    const existing = document.getElementById(scriptId);
-    if (existing) existing.remove();
-
-    window._sheetsCallback = function(data) {
-      try {
-        const rows = data.table.rows.map(r => ({
-          categoria: r.c[0] ? r.c[0].v || '' : '',
-          nombre:    r.c[1] ? r.c[1].v || '' : '',
-          precio:    r.c[3] ? (r.c[3].v !== null ? String(r.c[3].v) : '') : ''
-        })).filter(r => r.categoria && r.nombre);
-
-        if (!rows.length) throw new Error('Sin datos');
-        const groups = groupByCategory(rows);
-        buildProductsHTML(groups);
-      } catch(e) {
-        console.warn('Error procesando datos:', e);
-        showFallback();
-      }
-    };
-
-    const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQo_IdR5oBFiVChBq8v8_fa_JC0Z7MrcCioDCTk1iamd0EYLnF5Qi7PLCtiu9rmWg/pub?gid=2061909608&single=true&output=csv';
-    // Try direct fetch first (works on GitHub Pages with HTTPS)
     try {
-      const res = await fetch(url);
-      if (res.ok) {
-        const csv = await res.text();
-        const rows = parseCSV(csv);
-        if (rows.length) {
-          const groups = groupByCategory(rows);
-          buildProductsHTML(groups);
-          return;
-        }
-      }
-    } catch(e) {
-      console.warn('Direct fetch failed, trying JSONP...');
+      const res = await fetch('https://script.google.com/macros/s/AKfycbycJPh9mfXBITFn9ye_gIt0M9sy30UtC0L9TcL6BH9_SZ28tgu4St49zwNerJBaEapU/exec');
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const rows = await res.json();
+      if (!rows || !rows.length) throw new Error('Sin datos');
+      const groups = groupByCategory(rows);
+      buildProductsHTML(groups);
+    } catch(err) {
+      console.warn('Error cargando productos:', err);
+      showFallback();
     }
-
-    // Fallback: Google Visualization JSONP
-    const tqUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQo_IdR5oBFiVChBq8v8_fa_JC0Z7MrcCioDCTk1iamd0EYLnF5Qi7PLCtiu9rmWg/gviz/tq?tqx=out:json&tq=select+A,B,C,D&gid=2061909608&callback=_sheetsCallback';
-    const script = document.createElement('script');
-    script.id = scriptId;
-    script.src = tqUrl;
-    script.onerror = () => { console.warn('JSONP failed'); showFallback(); };
-    document.head.appendChild(script);
   }
 
   // ── Scroll reveal
