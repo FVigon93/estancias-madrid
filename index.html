@@ -232,126 +232,10 @@
     <div class="section-label">Nuestros productos</div>
     <h2 class="section-title">Todo para<br>el <em>asado perfecto</em></h2>
   </div>
-  <div class="cat-tabs">
-    <button class="cat-tab active" onclick="showCat('vaca',this)">Carne Vacuna</button>
-    <button class="cat-tab" onclick="showCat('pollo',this)">Pollo</button>
-    <button class="cat-tab" onclick="showCat('cerdo',this)">Cerdo</button>
-    <button class="cat-tab" onclick="showCat('achuras',this)">Achuras</button>
-    <button class="cat-tab" onclick="showCat('milanesas',this)">Milanesas</button>
-    <button class="cat-tab" onclick="showCat('hamburguesas',this)">Hamburguesas</button>
-    <button class="cat-tab" onclick="showCat('quesos',this)">Quesos</button>
-    <button class="cat-tab" onclick="showCat('aceites',this)">Aceites & Acetos</button>
-    <button class="cat-tab" onclick="showCat('vinos',this)">Vinos</button>
-    <button class="cat-tab" onclick="showCat('varios',this)">Varios</button>
+  <div class="cat-tabs" id="cat-tabs-container">
+    <div style="color:rgba(255,255,255,0.4); font-size:0.75rem; padding: 10px 0;">Cargando productos...</div>
   </div>
-  <div class="productos-grid active" id="cat-vaca">
-    <div class="product-card"><span class="product-name">Asado</span><span class="product-price">$28.000</span></div>
-    <div class="product-card"><span class="product-name">Vacío</span><span class="product-price">$32.000</span></div>
-    <div class="product-card"><span class="product-name">Matambre</span><span class="product-price">$16.000</span></div>
-    <div class="product-card"><span class="product-name">Tapa de Asado</span><span class="product-price">$17.500</span></div>
-    <div class="product-card"><span class="product-name">Bife Angosto</span><span class="product-price">$27.000</span></div>
-    <div class="product-card"><span class="product-name">Bife Ancho</span><span class="product-price">$26.000</span></div>
-    <div class="product-card"><span class="product-name">Lomo</span><span class="product-price">$33.000</span></div>
-    <div class="product-card"><span class="product-name">Nalga</span><span class="product-price">$25.500</span></div>
-    <div class="product-card"><span class="product-name">Cuadril</span><span class="product-price">$27.500</span></div>
-    <div class="product-card"><span class="product-name">Peceto</span><span class="product-price">$28.000</span></div>
-    <div class="product-card"><span class="product-name">Paleta</span><span class="product-price">$19.000</span></div>
-    <div class="product-card"><span class="product-name">Falda</span><span class="product-price">$14.500</span></div>
-    <div class="product-card"><span class="product-name">Rossbeff</span><span class="product-price">$19.000</span></div>
-    <div class="product-card"><span class="product-name">Osobuco</span><span class="product-price">$16.000</span></div>
-    <div class="product-card"><span class="product-name">Bola de Lomo</span><span class="product-price">$25.500</span></div>
-    <div class="product-card"><span class="product-name">Tapa de Nalga</span><span class="product-price">$19.500</span></div>
-    <div class="product-card"><span class="product-name">Entraña</span><span class="product-price">$35.000</span></div>
-    <div class="product-card"><span class="product-name">Colita de Cuadril</span><span class="product-price">$30.000</span></div>
-    <div class="product-card"><span class="product-name">Tortuguita</span><span class="product-price">$19.000</span></div>
-    <div class="product-card"><span class="product-name">Palomita</span><span class="product-price">$18.500</span></div>
-    <div class="product-card"><span class="product-name">Cuadrada</span><span class="product-price">$21.000</span></div>
-    <div class="product-card"><span class="product-name">Ojo de Bife</span><span class="product-price">$31.000</span></div>
-    <div class="product-card"><span class="product-name">Bife de Chorizo</span><span class="product-price na">Consultar</span></div>
-    <div class="product-card"><span class="product-name">Marucha</span><span class="product-price na">Consultar</span></div>
-    <div class="product-card"><span class="product-name">Otros Cortes</span><span class="product-price">$10.000</span></div>
-  </div>
-  <div class="productos-grid" id="cat-pollo">
-    <div class="product-card"><span class="product-name">Supremas</span><span class="product-price">$13.500</span></div>
-    <div class="product-card"><span class="product-name">Pata y Muslo</span><span class="product-price">$5.500</span></div>
-    <div class="product-card"><span class="product-name">Pata y Muslo Deshuesada</span><span class="product-price">$13.500</span></div>
-    <div class="product-card"><span class="product-name">Pollo Entero</span><span class="product-price">$7.500</span></div>
-    <div class="product-card"><span class="product-name">Alitas</span><span class="product-price">$3.000</span></div>
-  </div>
-  <div class="productos-grid" id="cat-cerdo">
-    <div class="product-card"><span class="product-name">Bondiola</span><span class="product-price">$13.200</span></div>
-    <div class="product-card"><span class="product-name">Carré</span><span class="product-price">$11.000</span></div>
-    <div class="product-card"><span class="product-name">Chuleta</span><span class="product-price na">Consultar</span></div>
-    <div class="product-card"><span class="product-name">Churrasquito</span><span class="product-price na">Consultar</span></div>
-    <div class="product-card"><span class="product-name">Jamón</span><span class="product-price na">Consultar</span></div>
-    <div class="product-card"><span class="product-name">Matambrito</span><span class="product-price">$16.000</span></div>
-    <div class="product-card"><span class="product-name">Panceta</span><span class="product-price na">Consultar</span></div>
-    <div class="product-card"><span class="product-name">Pechito</span><span class="product-price">$11.000</span></div>
-    <div class="product-card"><span class="product-name">Solomillo</span><span class="product-price">$15.000</span></div>
-  </div>
-  <div class="productos-grid" id="cat-achuras">
-    <div class="product-card"><span class="product-name">Chinchulines</span><span class="product-price">$7.000</span></div>
-    <div class="product-card"><span class="product-name">Corazón</span><span class="product-price na">Consultar</span></div>
-    <div class="product-card"><span class="product-name">Hígado</span><span class="product-price">$6.000</span></div>
-    <div class="product-card"><span class="product-name">Lengua</span><span class="product-price">$12.000</span></div>
-    <div class="product-card"><span class="product-name">Molleja</span><span class="product-price">$29.500</span></div>
-    <div class="product-card"><span class="product-name">Riñón</span><span class="product-price">$5.800</span></div>
-    <div class="product-card"><span class="product-name">Chorizos</span><span class="product-price">$12.000</span></div>
-    <div class="product-card"><span class="product-name">Morcilla</span><span class="product-price">$9.500</span></div>
-    <div class="product-card"><span class="product-name">Salchicha Parrillera</span><span class="product-price">$13.000</span></div>
-    <div class="product-card"><span class="product-name">Salchicha Viena</span><span class="product-price">$10.700</span></div>
-  </div>
-  <div class="productos-grid" id="cat-milanesas">
-    <div class="product-card"><span class="product-name">Milanesa de Pollo</span><span class="product-price">$16.000</span></div>
-    <div class="product-card"><span class="product-name">Milanesa de Carne</span><span class="product-price">$17.000</span></div>
-    <div class="product-card"><span class="product-name">Milanesa de Peceto</span><span class="product-price">$19.000</span></div>
-  </div>
-  <div class="productos-grid" id="cat-hamburguesas">
-    <div class="product-card"><span class="product-name">Hamburguesa de Carne</span><span class="product-price">$12.000</span></div>
-    <div class="product-card"><span class="product-name">Hamburguesa de Pollo</span><span class="product-price">$12.000</span></div>
-  </div>
-  <div class="productos-grid" id="cat-quesos">
-    <div class="product-card"><span class="product-name">Provoleta La Blanqueada</span><span class="product-price">$40.000</span></div>
-    <div class="product-card"><span class="product-name">Parmesano Porción La Blanqueada</span><span class="product-price">$28.000</span></div>
-    <div class="product-card"><span class="product-name">Gouda Porción La Blanqueada</span><span class="product-price">$20.000</span></div>
-    <div class="product-card"><span class="product-name">Reggianito Trozado Santa Rosa</span><span class="product-price">$40.000</span></div>
-    <div class="product-card"><span class="product-name">Reggianito 1/4 Horma Santa Rosa</span><span class="product-price">$38.000</span></div>
-    <div class="product-card"><span class="product-name">Provoleta Santa Rosa Trozada</span><span class="product-price">$45.000</span></div>
-    <div class="product-card"><span class="product-name">Provolone Trozado Santa Rosa</span><span class="product-price">$40.000</span></div>
-  </div>
-  <div class="productos-grid" id="cat-aceites">
-    <div class="product-card"><span class="product-name">Aceite Dell Isola 500ml</span><span class="product-price">$21.700</span></div>
-    <div class="product-card"><span class="product-name">Aceite Dell Isola 250ml</span><span class="product-price">$12.000</span></div>
-    <div class="product-card"><span class="product-name">Aceite Catena 500ml</span><span class="product-price">$26.000</span></div>
-    <div class="product-card"><span class="product-name">Aceite Zuelo</span><span class="product-price">$17.500</span></div>
-    <div class="product-card"><span class="product-name">Aceite Zuccardi Arauco</span><span class="product-price">$27.000</span></div>
-    <div class="product-card"><span class="product-name">Aceite Zuccardi Genovesa</span><span class="product-price">$19.000</span></div>
-    <div class="product-card"><span class="product-name">Aceite Laur 500ml</span><span class="product-price">$14.500</span></div>
-    <div class="product-card"><span class="product-name">Aceto Dell Isola 500ml</span><span class="product-price">$7.900</span></div>
-    <div class="product-card"><span class="product-name">Aceto Millan</span><span class="product-price">$5.500</span></div>
-  </div>
-  <div class="productos-grid" id="cat-vinos">
-    <div class="product-card"><span class="product-name">En Enemigo</span><span class="product-price">$20.000</span></div>
-    <div class="product-card"><span class="product-name">Angeliza Zapata</span><span class="product-price">$25.000</span></div>
-    <div class="product-card"><span class="product-name">Rutini</span><span class="product-price">$14.000</span></div>
-    <div class="product-card"><span class="product-name">Pispi</span><span class="product-price">$10.000</span></div>
-    <div class="product-card"><span class="product-name">Bressia</span><span class="product-price">$28.000</span></div>
-    <div class="product-card"><span class="product-name">Luigi Bosca</span><span class="product-price">$12.500</span></div>
-    <div class="product-card"><span class="product-name">DV Catena</span><span class="product-price">$12.000</span></div>
-    <div class="product-card"><span class="product-name">Saint Felicen</span><span class="product-price">$9.500</span></div>
-    <div class="product-card"><span class="product-name">Trumpeter</span><span class="product-price">$8.500</span></div>
-    <div class="product-card"><span class="product-name">Nicasia</span><span class="product-price">$7.000</span></div>
-    <div class="product-card"><span class="product-name">Cordero Piel de Lobo</span><span class="product-price">$5.000</span></div>
-    <div class="product-card"><span class="product-name">Sapo de Otro Pozo</span><span class="product-price">$11.000</span></div>
-  </div>
-  <div class="productos-grid" id="cat-varios">
-    <div class="product-card"><span class="product-name">Criolla</span><span class="product-price">$8.400</span></div>
-    <div class="product-card"><span class="product-name">Chimichurri</span><span class="product-price">$2.800</span></div>
-    <div class="product-card"><span class="product-name">Aceitunas</span><span class="product-price">$6.300</span></div>
-    <div class="product-card"><span class="product-name">Carbón</span><span class="product-price">$7.000</span></div>
-    <div class="product-card"><span class="product-name">Leña</span><span class="product-price">$9.000</span></div>
-    <div class="product-card"><span class="product-name">Huevos</span><span class="product-price">$6.500</span></div>
-  </div>
+  <div id="productos-dynamic-container"></div>
 </section>
 
 <!-- WA CTA -->
@@ -427,25 +311,11 @@
 </footer>
 
 <script>
-  // ── Categorías
-  function showCat(cat, btn) {
-    document.querySelectorAll('.productos-grid').forEach(g => g.classList.remove('active'));
-    document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
-    document.getElementById('cat-' + cat).classList.add('active');
-    btn.classList.add('active');
-  }
-
-  // ── Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
-
-  // ── Precios dinámicos desde Google Sheets
+  // ── Sheet URL
   const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQo_IdR5oBFiVChBq8v8_fa_JC0Z7MrcCioDCTk1iamd0EYLnF5Qi7PLCtiu9rmWg/pub?gid=2061909608&single=true&output=csv';
 
-  // Mapa de categorías a IDs de grilla
-  const CAT_MAP = {
+  // ── Mapa categoría → id de grilla
+  const CAT_IDS = {
     'Carne Vacuna': 'vaca',
     'Pollo': 'pollo',
     'Cerdo': 'cerdo',
@@ -455,20 +325,33 @@
     'Quesos': 'quesos',
     'Aceites': 'aceites',
     'Acetos': 'aceites',
-    'Varios': 'varios',
-    'Vinos': 'vinos'
+    'Vinos': 'vinos',
+    'Varios': 'varios'
   };
+
+  // ── Orden de categorías para las pestañas
+  const CAT_ORDER = ['Carne Vacuna','Pollo','Cerdo','Achuras','Milanesas','Hamburguesas','Quesos','Aceites','Vinos','Varios'];
 
   function parseCSV(text) {
     const rows = [];
     const lines = text.split('\n');
     for (let i = 1; i < lines.length; i++) {
-      const cols = lines[i].split(',');
-      if (cols.length >= 2) {
+      const line = lines[i].trim();
+      if (!line) continue;
+      // Handle quoted fields
+      const cols = [];
+      let cur = '', inQ = false;
+      for (let c of line) {
+        if (c === '"') { inQ = !inQ; }
+        else if (c === ',' && !inQ) { cols.push(cur.trim()); cur = ''; }
+        else { cur += c; }
+      }
+      cols.push(cur.trim());
+      if (cols.length >= 2 && cols[0] && cols[1]) {
         rows.push({
-          categoria: cols[0].trim().replace(/"/g, ''),
-          nombre: cols[1].trim().replace(/"/g, ''),
-          precio: cols[3] ? cols[3].trim().replace(/"/g, '') : ''
+          categoria: cols[0],
+          nombre: cols[1],
+          precio: cols[3] || ''
         });
       }
     }
@@ -478,57 +361,121 @@
   function formatPrice(val) {
     if (!val || val === '' || val === '-') return null;
     const num = parseFloat(val.replace(/[^0-9.]/g, ''));
-    if (isNaN(num)) return null;
-    return '$' + num.toLocaleString('es-AR', { minimumFractionDigits: 0 });
+    if (isNaN(num) || num === 0) return null;
+    return '$' + Math.round(num).toLocaleString('es-AR');
   }
 
-  function updatePrices(rows) {
+  function groupByCategory(rows) {
+    const groups = {};
     rows.forEach(row => {
-      const catId = CAT_MAP[row.categoria];
-      if (!catId) return;
-      const grid = document.getElementById('cat-' + catId);
-      if (!grid) return;
-
-      // Buscar la card por nombre
-      const cards = grid.querySelectorAll('.product-card');
-      cards.forEach(card => {
-        const nameEl = card.querySelector('.product-name');
-        if (!nameEl) return;
-        const cardName = nameEl.textContent.trim().toLowerCase();
-        const rowName = row.nombre.toLowerCase();
-        if (cardName === rowName) {
-          const priceEl = card.querySelector('.product-price');
-          if (!priceEl) return;
-          const formatted = formatPrice(row.precio);
-          if (formatted) {
-            priceEl.textContent = formatted;
-            priceEl.classList.remove('na');
-          } else {
-            priceEl.textContent = 'Consultar';
-            priceEl.classList.add('na');
-          }
-        }
-      });
+      const catId = CAT_IDS[row.categoria] || row.categoria.toLowerCase().replace(/\s+/g, '_');
+      if (!groups[row.categoria]) groups[row.categoria] = { id: catId, items: [] };
+      groups[row.categoria].items.push(row);
     });
-    console.log('✅ Precios actualizados desde Google Sheets');
+    return groups;
   }
 
-  async function loadPrices() {
+  function buildProductsHTML(groups) {
+    const tabsContainer = document.getElementById('cat-tabs-container');
+    const dynContainer = document.getElementById('productos-dynamic-container');
+    tabsContainer.innerHTML = '';
+    dynContainer.innerHTML = '';
+
+    // Build ordered category list (known order first, then any extras)
+    const knownCats = CAT_ORDER.filter(c => groups[c]);
+    const extraCats = Object.keys(groups).filter(c => !CAT_ORDER.includes(c));
+    const allCats = [...knownCats, ...extraCats];
+
+    // Merge Aceites + Acetos into one tab
+    const seen = new Set();
+    const uniqueTabs = [];
+    allCats.forEach(cat => {
+      const id = groups[cat].id;
+      if (!seen.has(id)) {
+        seen.add(id);
+        uniqueTabs.push({ label: cat === 'Aceites' || cat === 'Acetos' ? 'Aceites & Acetos' : cat, id, cat });
+      }
+    });
+
+    // Build tabs
+    uniqueTabs.forEach((tab, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'cat-tab' + (i === 0 ? ' active' : '');
+      btn.textContent = tab.label;
+      btn.onclick = function() { showCat(tab.id, this); };
+      tabsContainer.appendChild(btn);
+    });
+
+    // Build grids - collect all items per id
+    const gridItems = {};
+    allCats.forEach(cat => {
+      const id = groups[cat].id;
+      if (!gridItems[id]) gridItems[id] = [];
+      gridItems[id].push(...groups[cat].items);
+    });
+
+    uniqueTabs.forEach((tab, i) => {
+      const items = gridItems[tab.id] || [];
+      const grid = document.createElement('div');
+      grid.className = 'productos-grid' + (i === 0 ? ' active' : '');
+      grid.id = 'cat-' + tab.id;
+
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        const price = formatPrice(item.precio);
+        card.innerHTML = \`<span class="product-name">\${item.nombre}</span><span class="product-price\${price ? '' : ' na'}">\${price || 'Consultar'}</span>\`;
+        grid.appendChild(card);
+      });
+
+      dynContainer.appendChild(grid);
+    });
+
+    console.log('✅ Productos cargados desde Google Sheets');
+  }
+
+  function showFallback() {
+    const tabsContainer = document.getElementById('cat-tabs-container');
+    tabsContainer.innerHTML = '<p style="color:rgba(255,255,255,0.4);font-size:0.8rem;padding:10px 0;">No se pudo conectar con la planilla. Verificá tu conexión.</p>';
+  }
+
+  async function loadProducts() {
     try {
-      // Usamos un proxy CORS para evitar bloqueos del navegador
       const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(SHEET_URL);
-      const response = await fetch(proxyUrl);
-      if (!response.ok) throw new Error('Error al cargar');
-      const csv = await response.text();
+      const res = await fetch(proxyUrl);
+      if (!res.ok) throw new Error('Error HTTP ' + res.status);
+      const csv = await res.text();
       const rows = parseCSV(csv);
-      updatePrices(rows);
+      if (!rows.length) throw new Error('Sin datos');
+      const groups = groupByCategory(rows);
+      buildProductsHTML(groups);
     } catch (err) {
-      console.warn('No se pudieron cargar precios desde Sheets, usando precios locales.', err);
+      console.warn('Error cargando planilla:', err);
+      showFallback();
     }
   }
 
-  // Cargar precios al abrir la web
-  window.addEventListener('DOMContentLoaded', loadPrices);
+  // ── Scroll reveal
+  function initReveal() {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+  }
+
+  // ── showCat helper
+  function showCat(cat, btn) {
+    document.querySelectorAll('.productos-grid').forEach(g => g.classList.remove('active'));
+    document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+    const grid = document.getElementById('cat-' + cat);
+    if (grid) grid.classList.add('active');
+    if (btn) btn.classList.add('active');
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    loadProducts();
+    initReveal();
+  });
 </script>
 </body>
 </html>
