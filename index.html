@@ -373,25 +373,23 @@
 
   function formatPrice(val) {
     if (val === null || val === undefined || val === '' || val === '-') return null;
-    // Handle numeric values from Apps Script (already numbers)
-    let num;
-    if (typeof val === 'number') {
-      num = val;
-    } else {
-      // Remove currency symbols, spaces, dots used as thousand separators
-      const cleaned = String(val).replace(/[^0-9,.-]/g, '').replace(',', '.');
-      num = parseFloat(cleaned);
-    }
-    if (isNaN(num) || num === 0) return null;
+    const num = typeof val === 'number' ? val : parseFloat(String(val).replace(/[^0-9.]/g, ''));
+    if (isNaN(num) || num < 1) return null;
     return '$' + Math.round(num).toLocaleString('es-AR');
   }
 
   function groupByCategory(rows) {
     const groups = {};
     rows.forEach(row => {
-      const catId = CAT_IDS[row.categoria] || row.categoria.toLowerCase().replace(/\s+/g, '_');
-      if (!groups[row.categoria]) groups[row.categoria] = { id: catId, items: [] };
-      groups[row.categoria].items.push(row);
+      if (!row.categoria || !row.nombre) return;
+      const cat = String(row.categoria).trim();
+      const catId = CAT_IDS[cat] || cat.toLowerCase().replace(/\s+/g, '_');
+      if (!groups[cat]) groups[cat] = { id: catId, items: [] };
+      groups[cat].items.push({
+        categoria: cat,
+        nombre: String(row.nombre).trim(),
+        precio: row.precio !== undefined && row.precio !== null ? row.precio : ''
+      });
     });
     return groups;
   }
@@ -464,7 +462,7 @@
 
     async function loadProducts() {
     try {
-      const res = await fetch('https://script.google.com/macros/s/AKfycbycJPh9mfXBITFn9ye_gIt0M9sy30UtC0L9TcL6BH9_SZ28tgu4St49zwNerJBaEapU/exec');
+      const res = await fetch('https://script.google.com/macros/s/AKfycby-nmdCCPA8pUBTAeBlo-xPuzJ1w_93RvHCl7UFvGY7rTq9k-LIk-ZASva3wd21nh7h/exec');
       if (!res.ok) throw new Error('HTTP ' + res.status);
       const rows = await res.json();
       if (!rows || !rows.length) throw new Error('Sin datos');
