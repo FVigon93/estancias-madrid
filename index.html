@@ -174,6 +174,193 @@
     .productos-grid { grid-template-columns: 1fr; }
     .footer-cats { display: none; }
   }
+
+  
+
+  /* ══ ANIMACIONES ══ */
+
+  /* Partículas flotantes en el hero */
+  .hero-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0;
+    animation: floatParticle linear infinite;
+  }
+  @keyframes floatParticle {
+    0%   { transform: translateY(100vh) translateX(0); opacity: 0; }
+    10%  { opacity: 0.6; }
+    90%  { opacity: 0.3; }
+    100% { transform: translateY(-20px) translateX(40px); opacity: 0; }
+  }
+
+  /* Shimmer en el título del hero */
+  .hero-title {
+    background: linear-gradient(90deg, #fff 0%, #fff 40%, var(--gold-light) 50%, #fff 60%, #fff 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmerText 4s linear infinite;
+  }
+  .hero-title .italic {
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 40%, #fff 50%, var(--gold-light) 60%, var(--gold) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmerText 3s linear infinite;
+  }
+  @keyframes shimmerText {
+    0%   { background-position: 200% center; }
+    100% { background-position: -200% center; }
+  }
+
+  /* Línea dorada animada bajo el nav */
+  nav::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    height: 1px;
+    width: 0%;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    animation: navLine 3s ease-in-out infinite;
+  }
+  @keyframes navLine {
+    0%   { left: 0%;  width: 0%; }
+    50%  { left: 0%;  width: 100%; }
+    100% { left: 100%; width: 0%; }
+  }
+
+  /* Pulse en el diamond del hero */
+  .hero-diamond {
+    animation: diamondPulse 2s ease-in-out infinite;
+  }
+  @keyframes diamondPulse {
+    0%, 100% { transform: rotate(45deg) scale(1); opacity: 1; }
+    50%       { transform: rotate(45deg) scale(1.5); opacity: 0.5; }
+  }
+
+  /* Hover elevación en tarjetas de productos */
+  .product-card {
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .product-card:hover {
+    transform: translateX(6px) translateY(-2px);
+    box-shadow: 4px 4px 20px rgba(123,29,46,0.12);
+  }
+
+  /* Precio con color animado al hacer hover en la card */
+  .product-card:hover .product-price {
+    animation: priceGlow 0.4s ease forwards;
+  }
+  @keyframes priceGlow {
+    0%   { color: var(--bordo); }
+    100% { color: var(--gold-dark); }
+  }
+
+  /* Botones con efecto ripple */
+  .btn-primary, .btn-secondary, .wa-main-btn {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::after, .btn-secondary::after, .wa-main-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 0; height: 0;
+    background: rgba(255,255,255,0.25);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s, height 0.5s, opacity 0.5s;
+    opacity: 0;
+  }
+  .btn-primary:active::after, .btn-secondary:active::after, .wa-main-btn:active::after {
+    width: 300px; height: 300px; opacity: 0;
+  }
+
+  /* Stat numbers counter animation */
+  .stat-num {
+    transition: transform 0.3s ease;
+  }
+  .stat:hover .stat-num {
+    transform: scale(1.15);
+    color: var(--bordo-light);
+  }
+
+  /* Nosotros card border animation */
+  .nosotros-card::before {
+    animation: borderSlide 3s linear infinite;
+  }
+  @keyframes borderSlide {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* WhatsApp float button heartbeat */
+  .wa-float {
+    animation: floatIn 1s 1s ease both, heartbeat 2s 3s ease-in-out infinite;
+  }
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    14%       { transform: scale(1.1); }
+    28%       { transform: scale(1); }
+    42%       { transform: scale(1.05); }
+    70%       { transform: scale(1); }
+  }
+
+  /* Tabs hover con deslizamiento */
+  .cat-tab {
+    position: relative;
+    overflow: hidden;
+  }
+  .cat-tab::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: -100%;
+    width: 100%; height: 2px;
+    background: var(--gold);
+    transition: left 0.3s ease;
+  }
+  .cat-tab:hover::after, .cat-tab.active::after {
+    left: 0;
+  }
+
+  /* Contact cards hover */
+  .contact-card {
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .contact-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(123,29,46,0.1);
+  }
+
+  /* Instagram button hover */
+  a[href*="instagram"]:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 32px rgba(220,39,67,0.3) !important;
+  }
+
+  /* Scroll progress bar */
+  .scroll-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+    z-index: 9999;
+    transition: width 0.1s linear;
+    width: 0%;
+  }
+
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-368BCZXVK8"></script>
@@ -185,6 +372,8 @@
 </script>
 </head>
 <body>
+
+<div class="scroll-progress" id="scroll-progress"></div>
 
 <!-- FLOATING WA -->
 <a href="https://wa.me/5491166756374?text=Hola!%20Quiero%20hacer%20un%20pedido%20en%20Estancias%20Madrid" class="wa-float" target="_blank">
@@ -209,6 +398,7 @@
 <!-- HERO -->
 <section id="inicio">
   <div class="hero-bg"></div>
+  <div class="hero-particles" id="hero-particles"></div>
   <div class="hero-overlay"></div>
   <div class="hero-deco"></div>
   <div class="hero-content">
@@ -334,6 +524,7 @@
 <script>
   // ── Sheet URL
   const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQo_IdR5oBFiVChBq8v8_fa_JC0Z7MrcCioDCTk1iamd0EYLnF5Qi7PLCtiu9rmWg/pub?gid=2061909608&single=true&output=csv';
+
 
   // ── Mapa categoría → id de grilla
   const CAT_IDS = {
@@ -499,9 +690,63 @@
     if (btn) btn.classList.add('active');
   }
 
+  
+  // ── Partículas en el hero
+  function createParticles() {
+    const container = document.getElementById('hero-particles');
+    if (!container) return;
+    for (let i = 0; i < 25; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.width = p.style.height = (Math.random() * 3 + 1) + 'px';
+      p.style.animationDuration = (Math.random() * 8 + 6) + 's';
+      p.style.animationDelay = (Math.random() * 8) + 's';
+      container.appendChild(p);
+    }
+  }
+
+  // ── Barra de progreso de scroll
+  function updateScrollProgress() {
+    const bar = document.getElementById('scroll-progress');
+    if (!bar) return;
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width = pct + '%';
+  }
+
+  // ── Animación de contadores en stats
+  function animateCounters() {
+    document.querySelectorAll('.stat-num').forEach(el => {
+      const target = parseInt(el.textContent.replace(/\D/g,''));
+      const prefix = el.textContent.includes('+') ? '+' : '';
+      if (isNaN(target)) return;
+      let current = 0;
+      const step = Math.ceil(target / 40);
+      const timer = setInterval(() => {
+        current = Math.min(current + step, target);
+        el.textContent = prefix + current;
+        if (current >= target) clearInterval(timer);
+      }, 40);
+    });
+  }
+
+  // ── Inicializar
+  window.addEventListener('scroll', updateScrollProgress, { passive: true });
+
   window.addEventListener('DOMContentLoaded', () => {
     loadProducts();
     initReveal();
+    createParticles();
+    // Animar contadores cuando sean visibles
+    const statsObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { animateCounters(); statsObs.disconnect(); }
+      });
+    }, { threshold: 0.5 });
+    const stats = document.querySelector('.nosotros-stats');
+    if (stats) statsObs.observe(stats);
   });
 </script>
 </body>
