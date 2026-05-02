@@ -361,6 +361,32 @@
     width: 0%;
   }
 
+
+  /* Aviso de precios por kg */
+  .price-notice {
+    background: linear-gradient(135deg, var(--bordo-dark), var(--bordo-mid));
+    border-left: 3px solid var(--gold);
+    padding: 14px 24px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .price-notice-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .price-notice-text {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.5;
+    letter-spacing: 0.03em;
+  }
+  .price-notice-text strong {
+    color: var(--gold-light);
+    font-weight: 700;
+  }
+
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-368BCZXVK8"></script>
@@ -442,6 +468,13 @@
   <div class="productos-header reveal">
     <div class="section-label">Nuestros productos</div>
     <h2 class="section-title">Todo para<br>el <em>asado perfecto</em></h2>
+  </div>
+  <div class="price-notice">
+    <span class="price-notice-icon">ℹ️</span>
+    <span class="price-notice-text">
+      <strong>Precios por kilogramo:</strong> Carne Vacuna, Pollo y Cerdo. 
+      Quesos, Vinos, Aceites y Varios se venden por unidad. Consultá disponibilidad por WhatsApp.
+    </span>
   </div>
   <div class="cat-tabs" id="cat-tabs-container">
     <div style="color:rgba(255,255,255,0.4); font-size:0.75rem; padding: 10px 0;">Cargando productos...</div>
